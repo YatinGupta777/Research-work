@@ -824,4 +824,4 @@ class App:
         app = App(root)
         root.mainloop()
 
-run("Elon MusK",None)
+run("Elon Musk",None)
