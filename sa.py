@@ -3,7 +3,15 @@ import tweepy
 from time import sleep
 import csv
 import nltk
+from tkinter import*
+import tkinter as ttk
+import twitter
 
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.figure import Figure
+from matplotlib.backend_bases import key_press_handler
 
 
 consumer_key = "RGVO3CTujE60TW5IQy1JwmyxF"
@@ -15,75 +23,78 @@ auth.set_access_token(access_key, access_secret)
 
 #Function to download tweets corresponding to a hash tag.
 
-#hashtag = name
-hashtag = "#IOS11"
-api = tweepy.API(auth)
-print("FYI , the following trending topics are available")
-trends1 = api.trends_place(1)
-trends = set([trend['name'] for trend in trends1[0]['trends']])
-print(trends)
-print("Tweets downloading has started !!")
+def get_all_hash():
 
-'''
-cricTweet = tweepy.Cursor(api.search, q=hashtag).items(179)
-for tweet in cricTweet:
-print (tweet.text)
-with open('hashtag_tweets','w') as f:
-	for tweet in cricTweet:
-	f.write(tweet.text)
-'''
+    #hashtag = name
+    hashtag = "#IOS11"
+    api = tweepy.API(auth)
+    print("FYI , the following trending topics are available")
+    trends1 = api.trends_place(1)
+    trends = set([trend['name'] for trend in trends1[0]['trends']])
+    print(trends)
+    print("Tweets downloading has started !!")
 
-searchQuery = '#someHashtag'  # this is what we're searching for
-maxTweets = 5000 # Some arbitrary large number
-tweetsPerQry = 100  # this is the max the API permits
-fName = 'tweets.txt' # We'll store the tweets in a text file.
+    '''
+    cricTweet = tweepy.Cursor(api.search, q=hashtag).items(179)
+    for tweet in cricTweet:
+    print (tweet.text)
+    with open('hashtag_tweets','w') as f:
+    	for tweet in cricTweet:
+    	f.write(tweet.text)
+    '''
+
+    searchQuery = '#someHashtag'  # this is what we're searching for
+    maxTweets = 5000 # Some arbitrary large number
+    tweetsPerQry = 100  # this is the max the API permits
+    fName = 'tweets.txt' # We'll store the tweets in a text file.
 
 
-# If results from a specific ID onwards are reqd, set since_id to that ID.
-# else default to no lower limit, go as far back as API allows
-sinceId = None
+    # If results from a specific ID onwards are reqd, set since_id to that ID.
+    # else default to no lower limit, go as far back as API allows
+    sinceId = None
 
-# If results only below a specific ID are, set max_id to that ID.
-# else default to no upper limit, start from the most recent tweet matching the search query.
-max_id = -1
+    # If results only below a specific ID are, set max_id to that ID.
+    # else default to no upper limit, start from the most recent tweet matching the search query.
+    max_id = -1
 
-tweetCount = 0
-print("Downloading max {0} tweets".format(maxTweets))
-with open(fName, 'w') as f:
-    while tweetCount < maxTweets:
-        try:
-            if (max_id <= 0):
-                if (not sinceId):
-                    new_tweets = api.search(q=hashtag, count=tweetsPerQry)
-                else:
-                    new_tweets = api.search(q=hashtag, count=tweetsPerQry, since_id=sinceId)
-            else:
+    tweetCount = 0
+    print("Downloading max {0} tweets".format(maxTweets))
+    with open(fName, 'w') as f:
+        while tweetCount < maxTweets:
+            try:
+                if (max_id <= 0):
                     if (not sinceId):
-                        new_tweets = api.search(q=hashtag, count=tweetsPerQry, max_id=str(max_id - 1))
+                        new_tweets = api.search(q=hashtag, count=tweetsPerQry)
                     else:
-                        new_tweets = api.search(q=hashtag, count=tweetsPerQry, max_id=str(max_id - 1), since_id=sinceId)
-                    if not new_tweets:
-                        print("No more tweets found")
-                        break
-            list_tweets = []
-            for tweet in new_tweets:
-                list_tweets.append(tweet.text)
-                tweetCount += len(new_tweets)
-                print("Downloaded {0} tweets".format(tweetCount))
-                max_id = new_tweets[-1].id
-               # except tweepy.TweepError as e:
-                            # Just exit if any error
-                #        print("some error : " + str(e))
-                 #       break
-                z=open(hashtag+'.txt','w')
-            for tweet in list_tweets:
-                tweet=tweet.encode('ascii','ignore')
-                z.write(tweet.decode())
-                z.write("\n")
-                z.close()
-                returnlist_tweets
-        except :
-            print("Errors !")
+                        new_tweets = api.search(q=hashtag, count=tweetsPerQry, since_id=sinceId)
+                else:
+                        if (not sinceId):
+                            new_tweets = api.search(q=hashtag, count=tweetsPerQry, max_id=str(max_id - 1))
+                        else:
+                            new_tweets = api.search(q=hashtag, count=tweetsPerQry, max_id=str(max_id - 1), since_id=sinceId)
+                        if not new_tweets:
+                            print("No more tweets found")
+                            break
+                list_tweets = []
+                for tweet in new_tweets:
+                    list_tweets.append(tweet.text)
+                    tweetCount += len(new_tweets)
+                    print("Downloaded {0} tweets".format(tweetCount))
+                    max_id = new_tweets[-1].id
+                   # except tweepy.TweepError as e:
+                                # Just exit if any error
+                    #        print("some error : " + str(e))
+                     #       break
+                    z=open(hashtag+'.txt','w')
+                for tweet in list_tweets:
+                    tweet=tweet.encode('ascii','ignore')
+                    z.write(tweet.decode())
+                    z.write("\n")
+                    z.close()
+            except :
+                print("Errors !")
+    return list_tweets
+
 #print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
 #Function to download tweets corresponding to an username.
 def get_all_tweets(username):
@@ -115,22 +126,21 @@ def isEnglish(s):
 
     #The following function removes the part of the string that contains the substring eg. if
     #substring = 'http' , then http://www.google.com is removed, that means, remove until a space is found
-    def rem_substring(tweets,substring):
-        m=0;
+def rem_substring(tweets,substring):
+    m=0;
             #print(len(tweets))
-        for i in tweets:
-            while i.find(substring)!=-1:
-                k=i.find(substring)
-                d=i.find(' ',k,len(i))
-                if d!=-1:               #substring is present somwhere in the middle(not the end of the string)
-                    i=i[:k]+i[d:]
-                else:                   #special case when the substring is present at the end, we needn't append the
-                    i=i[:k]             #substring after the junk string to our result
-
+    for i in tweets:
+        while i.find(substring)!=-1:
+            k=i.find(substring)
+            d=i.find(' ',k,len(i))
+            if d!=-1:               #substring is present somwhere in the middle(not the end of the string)
+                i=i[:k]+i[d:]
+            else:                   #special case when the substring is present at the end, we needn't append the
+                i=i[:k]             #substring after the junk string to our result
             tweets[m]=i #store the result in tweets "list"
                       #print(i)
             m+= 1
-        return tweets
+    return tweets
 
 #The following function removes the non English tweets .Makes use of the above written isEnglish Function
 def removeNonEnglish(tweets):
@@ -642,3 +652,173 @@ def learn(name):
         z = z + 1
     y.close()
 
+#Main Program:
+def run(username, master):
+    column0_padx = 24
+    row_pady = 36
+    tweets = []
+    print (username)
+    if(username[0] == "@"):
+        tweets = get_all_tweets(username)
+    print("Downloading of tweets of user has started !!")
+
+
+###################
+    #if(username[0] == "#"):
+        #tweets = get_all_hash(username)
+    #NO GET_ALL_HASH FUNCTION
+##########
+    print("Downloading of tweets of hashtag has started !!")
+
+    print("Tweets have been downloaded !!")
+    print("Now Cleaning of tweets starts !!")
+
+        #time.sleep(1)
+    '''
+    filename = username+"tweets.txt"
+
+    with open(filename) as f:
+    for line in f:
+    tweets.append(line)
+    '''
+
+    tweets=rem_substring(tweets,'#')
+    tweets=rem_substring(tweets,'http')
+    tweets=rem_substring(tweets,'@')
+    tweets=rem_substring(tweets,'RT')
+    tweets=rem_punctuation(tweets,'\"')
+    tweets=rem_punctuation(tweets,'-')
+    tweets=rem_punctuation(tweets,'!')
+    tweets=rem_punctuation(tweets,':')
+    tweets=removeNonEnglish(tweets)
+        #tweets.replace("."," ")
+    for tweet in tweets:
+        tweet=tweet.replace("."," ")
+
+
+    z=open('cleaned_'+username+'.txt','w')
+    for tweet in tweets:
+        tweet=tweet.encode('ascii','ignore')
+        z.write("\n")
+        z.write(tweet.decode())
+    z.close()
+        #filename = username+"_cleaned_tweets.txt"
+        #x = open(filename,"a")
+    '''for i in tweets:
+    x.write(i+'\n')
+        #time.sleep(2)
+    '''
+    POS_tagger(tweets,username)
+    print("Tweets have now been cleaned !!")
+    evalue = score(tweets)
+
+    learn("pos_tagged_"+username+".txt")
+    L3 = Label(master, text="Happiness : ", wraplength=150, justify='left', pady=row_pady)
+    L3.grid(row=5, column=0, sticky='w', padx=column0_padx)
+    L8 = Label(master, text=str(evalue[0]))
+    L8.grid(row=5, column=1, sticky='w')
+    L4 = Label(master, text="Anger : ", wraplength=150, justify='left', pady=row_pady)
+    L4.grid(row=6, column=0, sticky='w', padx=column0_padx)
+    L9 = Label(master, text=str(evalue[1]))
+    L9.grid(row=6, column=1, sticky='w')
+    L5 = Label(master, text="Sadness : ", wraplength=150, justify='left', pady=row_pady)
+    L5.grid(row=7, column=0, sticky='w', padx=column0_padx)
+    L10 = Label(master, text=str(evalue[2]))
+    L10.grid(row=7, column=1, sticky='w')
+    L6 = Label(master, text="Fear : ", wraplength=150, justify='left', pady=row_pady)
+    L6.grid(row=8, column=0, sticky='w', padx=column0_padx)
+    L11 = Label(master, text=str(evalue[3]))
+    L11.grid(row=8, column=1, sticky='w')
+    L7 = Label(master, text="Disgust : ", wraplength=150, justify='left', pady=row_pady)
+    L7.grid(row=9, column=0, sticky='w', padx=column0_padx)
+    L12 = Label(master, text=str(evalue[4]))
+    L12.grid(row=9, column=1, sticky='w')
+
+    bottom_fram = Frame(master)
+    bottom_fram.grid(row=10, column=0, columnspan=2, sticky='w')
+
+    btn_start = ttk.Button(bottom_fram, text = "Show Graph", width=20, command= lambda: new_window())
+    btn_start.pack(side='left', padx=145)
+    print("Tweets have now been cleaned !!")
+
+    def new_window():
+        id = "Graph"
+        window = Toplevel(master)
+        label = ttk.Label(window, text=id)
+        label.pack(side="top", fill="both", padx=10, pady=10)
+
+        f = Figure(figsize=(5,5), dpi=100)
+        a = f.add_subplot(111)
+                #t = arange(0.0,3.0,0.01)
+                #s = sin(2*pi*t)
+                #a.plot(t,s)
+        a.plot([1,2,3,4,5],[evalue[0], evalue[1], evalue[2], evalue[3], evalue[4]])
+        a.set_title('Emotion Scores')
+        a.set_xlabel('1 - > Happiness , 2 - > Anger , 3 - > Sadness , 4 - > Fear , 5 - > Disgust ')
+        a.set_ylabel('Score')
+
+                # atk.DrawingArea
+        canvas = FigureCanvasTkAgg(f, master=window)
+        canvas.show()
+        canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+
+        toolbar = NavigationToolbar2TkAgg( canvas, window )
+        toolbar.update()
+        canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+
+        def on_key_event(event):
+            print('you pressed %s'%event.key)
+            key_press_handler(event, canvas, toolbar)
+
+            canvas.mpl_connect('key_press_event', on_key_event)
+
+        def _quit():
+            window.quit()     # stops mainloop
+            window.destroy()  # this is necessary on Windows to prevent
+                                        # Fatal Python Error: PyEval_RestoreThread: NULL tstate
+
+            button = ttk.Button(master=window, text='Quit', command=_quit)
+            button.pack(side=BOTTOM)
+
+        class App:
+            def __init__(self, master):
+                self.root = Frame(master)
+                column0_padx = 24
+                row_pady = 36
+
+                        #Label entry
+                userart = Label(
+                master, text="Input User Name -> ",
+                wraplength=150, justify='left', pady=row_pady)
+                entry_point = Entry(master, width=30)
+                userart.grid(row=1, column=0, sticky='w', padx=column0_padx)
+                entry_point.grid(row=1, column=1, sticky='w')
+
+                        # version
+                lbl_version = ttk.Label(master, text="Beta-Version @TechnoDesign")
+                version = ttk.Label(master, text="ver. 1.004")
+                lbl_version.grid(row=4, column=0, sticky='w', padx=column0_padx)
+                version.grid(row=4, column=1, sticky='w')
+
+                sep = ttk.Label(master)
+                sep.grid(row=3, column=0, sticky='w')
+
+                        #progress_bar
+                        #progressbar = ttk.Progressbar(orient='horizontal', length=200, mode='determinate')
+                        #progressbar.grid(row=5, column=0, sticky='w', padx=column0_padx)
+                        #progressbar.start()
+
+                        # buttons
+                bottom_frame = Frame(master)
+                bottom_frame.grid(row=2, column=0, columnspan=2, sticky='w')
+
+                btn_start = ttk.Button(bottom_frame, text = "Run", width=7, command=lambda: run(entry_point.get(), master))
+                btn_start.pack(side='left', padx=100)
+                btn_exit = ttk.Button(bottom_frame, text="Exit", width=7, command=self.root.quit)
+                btn_exit.pack(side='left', padx=10)
+
+                root = Tk()
+                root.title("Emotion Calculator of TWITTER Data")
+                root.minsize(500, 700)
+                app = App(root)
+                root.mainloop()
