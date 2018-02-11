@@ -26,10 +26,9 @@ t = Twitter(
 
 #Function to download tweets corresponding to a hash tag.
 
-def get_all_hash():
+def get_all_hash(hashtag):
 
     #hashtag = name
-    hashtag = "#IOS11"
     api = tweepy.API(auth)
     print("FYI , the following trending topics are available")
     trends1 = api.trends_place(1)
@@ -140,9 +139,8 @@ def rem_substring(tweets,substring):
                 i=i[:k]+i[d:]
             else:                   #special case when the substring is present at the end, we needn't append the
                 i=i[:k]             #substring after the junk string to our result
-            tweets[m]=i #store the result in tweets "list"
-                      #print(i)
-            m+= 1
+        tweets[m]=i #store the result in tweets "list"
+        m+= 1
     return tweets
 
 #The following function removes the non English tweets .Makes use of the above written isEnglish Function
@@ -666,14 +664,13 @@ def run(username, master):
     print (username)
     if(username[0] == "@"):
         tweets = get_all_tweets(username)
-    print("Downloading of tweets of user has started !!")
+        print("Downloading of tweets of user has started !!")
 
 
 
     if(username[0] == "#"):
         tweets = get_all_hash(username)
-
-    print("Downloading of tweets of hashtag has started !!")
+        print("Downloading of tweets of hashtag has started !!")
 
     print("Tweets have been downloaded !!")
     print("Now Cleaning of tweets starts !!")
@@ -828,4 +825,4 @@ class App:
         app = App(root)
         root.mainloop()
 
-run("@elonmusk",None)
+run("#DTU",None)
