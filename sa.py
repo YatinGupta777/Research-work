@@ -21,7 +21,7 @@ api = tweepy.API(auth)
 print("FYI , the following trending topics are available")
 trends1 = api.trends_place(1)
 trends = set([trend['name'] for trend in trends1[0]['trends']])
-print (trends)
+print(trends)
 print("Tweets downloading has started !!")
 
 '''
@@ -306,3 +306,163 @@ def score(name):
     return ans
 
 score("Elon Musk")# For debugging
+
+#Scoring Module 2
+
+def score(name):
+        # count_adj=0
+    count = 0
+    ans = []
+    ans.append(0)
+    ans.append(0)
+    ans.append(0)
+    ans.append(0)
+    ans.append(0)
+        # r=open(name,'r')
+    count_adj = 0
+        # count_verb=0
+    adj_ans = []
+    adj_ans.append(0)
+    adj_ans.append(0)
+    adj_ans.append(0)
+    adj_ans.append(0)
+    adj_ans.append(0)
+    adv_ans = []
+    adv_ans.append(0)
+    adv_ans.append(0)
+    adv_ans.append(0)
+    adv_ans.append(0)
+    adv_ans.append(0)
+
+     # r=open(sys.argv[1],'r')
+    for line in name:
+        line = line.lower()
+        line = line.replace(".", " ")
+        line = line.split(" ")
+        list_words = line
+            #    print(list_words[0])
+        for word in list_words:
+            with open("data_emotions_words_list.csv", encoding="ISO-8859-1", newline='') as f:
+                reader = csv.reader(f)
+            for row in reader:
+                my_list = row
+                word = word.lower()
+                if (word == my_list[0] and len(word) >= 1):
+                    ans_list = []
+                    count_adj += 1
+                        # print(count)
+                    ans_list.append(word)
+                    ans_list.append(my_list[1])
+                    ans_list.append(my_list[3])
+                    ans_list.append(my_list[5])
+                    ans_list.append(my_list[7])
+                    ans_list.append(my_list[9])
+                    adj_ans[0] += float(my_list[1])
+                    adj_ans[1] += float(my_list[3])
+                    adj_ans[2] += float(my_list[5])
+                    adj_ans[3] += float(my_list[7])
+                    adj_ans[4] += float(my_list[9])
+
+                        # final_list.append(ans_list)
+                        # print(ans_list)
+                    break
+
+    with open('adverb.csv', encoding="ISO-8859-1", newline='') as a:
+        reader = csv.reader(a)
+        for row in reader:
+            list_adverb = row
+                # print(list_adverb)
+            word = word.lower()
+            if (word == list_adverb[0]):
+                count += 1
+                ans_list = []
+                ans_list.append(word)
+                ans_list.append(list_adverb[1])
+                ans_list.append(list_adverb[1])
+                ans_list.append(list_adverb[1])
+                ans_list.append(list_adverb[1])
+                ans_list.append(list_adverb[1])
+                adv_ans[0] += float(list_adverb[1])
+                adv_ans[1] += float(list_adverb[1])
+                adv_ans[2] += float(list_adverb[1])
+                adv_ans[3] += float(list_adverb[1])
+                adv_ans[4] += float(list_adverb[1])
+
+                    # print(ans_list)
+                break
+
+    with open('verb.csv', encoding="ISO-8859-1", newline='') as v:
+        reader = csv.reader(v)
+        for row in reader:
+            list_verb = row
+
+            word = word.lower()
+                 # print(list_adverb)
+            if (word == list_verb[0]):
+                count += 1
+                ans_list = []
+                ans_list.append(word)
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                adv_ans[0] += float(list_verb[1])
+                adv_ans[1] += float(list_verb[1])
+                adv_ans[2] += float(list_verb[1])
+                adv_ans[3] += float(list_verb[1])
+                adv_ans[4] += float(list_verb[1])
+
+                    # print(ans_list)
+                break
+
+            if adj_ans[0] / count_adj > 3:
+                ans[0] = ((adj_ans[0] / 3.725) + adv_ans[0]) / (count + count_adj)
+            else:
+                ans[0] = ((adj_ans[0] / 3.725) - adv_ans[0]) / (count + count_adj)
+
+            if adj_ans[2] / count_adj > 3:
+                ans[2] = ((adj_ans[2] / 3.4875) + adv_ans[2]) / (count + count_adj)
+            else:
+                ans[2] = ((adj_ans[2] / 3.4875) - adv_ans[2]) / (count + count_adj)
+
+            if adj_ans[4] / count_adj > 3:
+                ans[4] = ((adj_ans[4] / 2.665) + adv_ans[4]) / (count + count_adj)
+            else:
+                ans[4] = ((adj_ans[4] / 2.665) - adv_ans[4]) / (count + count_adj)
+
+            if adj_ans[1] / count_adj > 3:
+                ans[1] = ((adj_ans[1] / 2.5) + adv_ans[1]) / (count + count_adj)
+            else:
+                ans[1] = ((adj_ans[1] / 2.5) - adv_ans[1]) / (count + count_adj)
+
+            if adj_ans[3] / count_adj > 3:
+                ans[3] = ((adj_ans[3] / 2.5) + adv_ans[3]) / (count + count_adj)
+            else:
+                ans[3] = ((adj_ans[3] / 2.5) - adv_ans[3]) / (count + count_adj)
+
+            print(ans)
+            return ans
+
+    #POS Tagger Function used to identify the adjectives, verbs, adverbs.
+def POS_tagger(tweets, username):
+    x = []
+        # for each line in tweets list
+    for line in tweets:
+        tokenized = nltk.sent_tokenize(line)
+        t = ""
+            # for each sentence in the line
+        for sent in tokenized:
+                # tokenize this sentence
+            text = nltk.word_tokenize(sent)
+            k = nltk.pos_tag(text)
+            for i in k:
+                    if (i[1][:2] == "VB" or i[1][:2] == "JJ") or i[1][:2] == "RB":
+                        t = t + i[0] + ' '
+
+                    x.append(t)
+                    filename = "pos_tagged_" + username + ".txt"
+                    handle = open(filename, "w")
+                    for i in x:
+                        handle.write(i + '\n')
+
