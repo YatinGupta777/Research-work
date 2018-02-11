@@ -165,13 +165,14 @@ def rem_punctuation(tweets,punct):
         i=i.replace(punct,'')
         tweets[m]=i
         m=m+1
-        return tweets
+    return tweets
 
 def score(name):
     filename = 'data_emotions_words_list.csv'
     count_adj=0
     count=0
     ans=[]
+    list_words = []
     ans.append(0)
     ans.append(0)
     ans.append(0)
@@ -209,113 +210,112 @@ def score(name):
 
         #FIX THISSS
 
-        # if special_word is None:
-        #     ans[0]+=float(my_list[1])
-        #     ans[1]+=float(my_list[3])
-        #     ans[2]+=float(my_list[5])
-        #     ans[3]+=float(my_list[7])
-        #     ans[4]+=float(my_list[9])
-        # else:
-        #     print(special_word,word)
-        #     print(special_score)
-        # if special_score>=0:
-        #     ans[0]+=float(my_list[1])*max(0.5,float(special_score))
-        #     ans[1]+=float(my_list[3])*max(0.5,float(special_score))
-        #     ans[2]+=float(my_list[5])*max(0.5,float(special_score))
-        #     ans[3]+=float(my_list[7])*max(0.5,float(special_score))
-        #     ans[4]+=float(my_list[9])*max(0.5,float(special_score))
-        # else:
-        #     ans[0]+=5-float(my_list[1])
-        #     ans[1]+=5-float(my_list[3])
-        #     ans[2]+=5-float(my_list[5])
-        #     ans[3]+=5-float(my_list[7])
-        #     ans[4]+=5-float(my_list[9])
-        #     special_word=None
+                if special_word is None:
+                    ans[0]+=float(my_list[1])
+                    ans[1]+=float(my_list[3])
+                    ans[2]+=float(my_list[5])
+                    ans[3]+=float(my_list[7])
+                    ans[4]+=float(my_list[9])
+                else:
+                    print(special_word,word)
+                    print(special_score)
+                if special_score>=0:
+                    ans[0]+=float(my_list[1])*max(0.5,float(special_score))
+                    ans[1]+=float(my_list[3])*max(0.5,float(special_score))
+                    ans[2]+=float(my_list[5])*max(0.5,float(special_score))
+                    ans[3]+=float(my_list[7])*max(0.5,float(special_score))
+                    ans[4]+=float(my_list[9])*max(0.5,float(special_score))
+                else:
+                    ans[0]+=5-float(my_list[1])
+                    ans[1]+=5-float(my_list[3])
+                    ans[2]+=5-float(my_list[5])
+                    ans[3]+=5-float(my_list[7])
+                    ans[4]+=5-float(my_list[9])
+                    special_word=None
                             #final_list.append(ans_list)
                             #print(ans_list)
         break
 
     #FILENAME CHANGED FOR DEBUGGING ORIGINAL == 'adverb.csv'
 
-    with open(filename,encoding="ISO-8859-1",newline='') as a:
-        reader=csv.reader(a)
-        for row in reader:
-            list_adverb=row
-                        #print(list_adverb)
-            word=word.lower()
-            if (word==list_adverb[0]):
-                count+=1
-                ans_list=[]
-                ans_list.append(word)
-                ans_list.append(list_adverb[1])
-                ans_list.append(list_adverb[1])
-                ans_list.append(list_adverb[1])
-                ans_list.append(list_adverb[1])
-                ans_list.append(list_adverb[1])
-                            #ans[0]+=float(list_adverb[1])
-                            #ans[1]+=float(list_adverb[1])
-                            #ans[2]+=float(list_adverb[1])
-                            #ans[3]+=float(list_adverb[1])
-                            #ans[4]+=float(list_adverb[1])
+        with open(filename,encoding="ISO-8859-1",newline='') as a:
+            reader=csv.reader(a)
+            for row in reader:
+                list_adverb=row
+                            #print(list_adverb)
+                word=word.lower()
+                if (word==list_adverb[0]):
+                    count+=1
+                    ans_list=[]
+                    ans_list.append(word)
+                    ans_list.append(list_adverb[1])
+                    ans_list.append(list_adverb[1])
+                    ans_list.append(list_adverb[1])
+                    ans_list.append(list_adverb[1])
+                    ans_list.append(list_adverb[1])
+                                #ans[0]+=float(list_adverb[1])
+                                #ans[1]+=float(list_adverb[1])
+                                #ans[2]+=float(list_adverb[1])
+                                #ans[3]+=float(list_adverb[1])
+                                #ans[4]+=float(list_adverb[1])
 
-            #FIX THISS BELOWW
+                #FIX THISS BELOWW
 
-            # if special_word is None:
-            #     special_word=word
-            #     special_score=float(list_adverb[1])
-            # else:
-            #     special_word=word
-            #     special_score=float(special_score)*float(list_adverb[1])
+                if special_word is None:
+                    special_word=word
+                    special_score=float(list_adverb[1])
+                else:
+                    special_word=word
+                    special_score=float(special_score)*float(list_adverb[1])
 
-                                    #print(ans_list)
-            break
-
-
-    #FILENAME CHANGED FOR DEBUGGING ORIGINAL == 'verb.csv'
-
-    with open(filename,encoding="ISO-8859-1",newline='') as v:
-        reader=csv.reader(v)
-        for row in reader:
-            list_verb=row
-            word=word.lower()
-                        #print(list_adverb)
-            if (word==list_verb[0]):
-                count+=1
-
-            #FIX THIS BELOW
-
-            # ans_list=[]
-            # ans_list.append(word)
-            # ans_list.append(list_verb[1])
-            # ans_list.append(list_verb[1])
-            # ans_list.append(list_verb[1])
-            # ans_list.append(list_verb[1])
-            # ans_list.append(list_verb[1])
-
-            #FIX THIS BELOW
+                                        #print(ans_list)
+                break
 
 
-            # if special_word is None:
-            #     special_word=word
-            #     special_score=float(list_verb[1])
-            # else:
-            #     special_word=word
-            #     special_score=float(special_score)*float(list_verb[1])
+        #FILENAME CHANGED FOR DEBUGGING ORIGINAL == 'verb.csv'
 
-                                    #print(ans_list)
-            break
+        with open(filename,encoding="ISO-8859-1",newline='') as v:
+            reader=csv.reader(v)
+            for row in reader:
+                list_verb=row
+                word=word.lower()
+                            #print(list_adverb)
+                if (word==list_verb[0]):
+                    count+=1
+
+                #FIX THIS BELOW
+
+                # ans_list=[]
+                # ans_list.append(word)
+                # ans_list.append(list_verb[1])
+                # ans_list.append(list_verb[1])
+                # ans_list.append(list_verb[1])
+                # ans_list.append(list_verb[1])
+                # ans_list.append(list_verb[1])
+
+                #FIX THIS BELOW
 
 
-        #print(count)
-        #print(ans)
-    for i in range(0,5):
-            #ans[i]=ans[i]/((5*count_adj)+count)
-        if count_adj != 0:
-            ans[i]=ans[i]/(5*count_adj)
-    print(ans)
-    return ans
+                # if special_word is None:
+                #     special_word=word
+                #     special_score=float(list_verb[1])
+                # else:
+                #     special_word=word
+                #     special_score=float(special_score)*float(list_verb[1])
 
-score("Elon Musk")# For debugging
+                                        #print(ans_list)
+                break
+
+
+            #print(count)
+            #print(ans)
+        for i in range(0,5):
+                #ans[i]=ans[i]/((5*count_adj)+count)
+            if count_adj != 0:
+                ans[i]=ans[i]/(5*count_adj)
+        print(ans)
+        return ans
+
 
 #Scoring Module 2
 
@@ -491,7 +491,9 @@ def learn(name):
     of = []
     oc = []
 
-    with open(fname,encoding="ISO-8859-1",newline='') as n: #new dictionary
+##FILENAME CHANGED ORIGINAL == fname
+
+    with open(filename,encoding="ISO-8859-1",newline='') as n: #new dictionary
         new_reader = csv.reader(n)
         for new_row in new_reader:
             my_new_list = new_row
@@ -663,11 +665,10 @@ def run(username, master):
     print("Downloading of tweets of user has started !!")
 
 
-###################
-    #if(username[0] == "#"):
-        #tweets = get_all_hash(username)
-    #NO GET_ALL_HASH FUNCTION
-##########
+
+    if(username[0] == "#"):
+        tweets = get_all_hash(username)
+
     print("Downloading of tweets of hashtag has started !!")
 
     print("Tweets have been downloaded !!")
@@ -741,67 +742,67 @@ def run(username, master):
     btn_start.pack(side='left', padx=145)
     print("Tweets have now been cleaned !!")
 
-    def new_window():
-        id = "Graph"
-        window = Toplevel(master)
-        label = ttk.Label(window, text=id)
-        label.pack(side="top", fill="both", padx=10, pady=10)
+def new_window():
+    id = "Graph"
+    window = Toplevel(master)
+    label = ttk.Label(window, text=id)
+    label.pack(side="top", fill="both", padx=10, pady=10)
 
-        f = Figure(figsize=(5,5), dpi=100)
-        a = f.add_subplot(111)
+    f = Figure(figsize=(5,5), dpi=100)
+    a = f.add_subplot(111)
                 #t = arange(0.0,3.0,0.01)
                 #s = sin(2*pi*t)
                 #a.plot(t,s)
-        a.plot([1,2,3,4,5],[evalue[0], evalue[1], evalue[2], evalue[3], evalue[4]])
-        a.set_title('Emotion Scores')
-        a.set_xlabel('1 - > Happiness , 2 - > Anger , 3 - > Sadness , 4 - > Fear , 5 - > Disgust ')
-        a.set_ylabel('Score')
+    a.plot([1,2,3,4,5],[evalue[0], evalue[1], evalue[2], evalue[3], evalue[4]])
+    a.set_title('Emotion Scores')
+    a.set_xlabel('1 - > Happiness , 2 - > Anger , 3 - > Sadness , 4 - > Fear , 5 - > Disgust ')
+    a.set_ylabel('Score')
 
                 # atk.DrawingArea
-        canvas = FigureCanvasTkAgg(f, master=window)
-        canvas.show()
-        canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+    canvas = FigureCanvasTkAgg(f, master=window)
+    canvas.show()
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
-        toolbar = NavigationToolbar2TkAgg( canvas, window )
-        toolbar.update()
-        canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+    toolbar = NavigationToolbar2TkAgg( canvas, window )
+    toolbar.update()
+    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-        def on_key_event(event):
-            print('you pressed %s'%event.key)
-            key_press_handler(event, canvas, toolbar)
+    def on_key_event(event):
+        print('you pressed %s'%event.key)
+        key_press_handler(event, canvas, toolbar)
 
-            canvas.mpl_connect('key_press_event', on_key_event)
+        canvas.mpl_connect('key_press_event', on_key_event)
 
-        def _quit():
-            window.quit()     # stops mainloop
-            window.destroy()  # this is necessary on Windows to prevent
+    def _quit():
+        window.quit()     # stops mainloop
+        window.destroy()  # this is necessary on Windows to prevent
                                         # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
-            button = ttk.Button(master=window, text='Quit', command=_quit)
-            button.pack(side=BOTTOM)
+        button = ttk.Button(master=window, text='Quit', command=_quit)
+        button.pack(side=BOTTOM)
 
-        class App:
-            def __init__(self, master):
-                self.root = Frame(master)
-                column0_padx = 24
-                row_pady = 36
+class App:
+    def __init__(self, master):
+        self.root = Frame(master)
+        column0_padx = 24
+        row_pady = 36
 
                         #Label entry
-                userart = Label(
-                master, text="Input User Name -> ",
-                wraplength=150, justify='left', pady=row_pady)
-                entry_point = Entry(master, width=30)
-                userart.grid(row=1, column=0, sticky='w', padx=column0_padx)
-                entry_point.grid(row=1, column=1, sticky='w')
+        userart = Label(
+        master, text="Input User Name -> ",
+        wraplength=150, justify='left', pady=row_pady)
+        entry_point = Entry(master, width=30)
+        userart.grid(row=1, column=0, sticky='w', padx=column0_padx)
+        entry_point.grid(row=1, column=1, sticky='w')
 
                         # version
-                lbl_version = ttk.Label(master, text="Beta-Version @TechnoDesign")
-                version = ttk.Label(master, text="ver. 1.004")
-                lbl_version.grid(row=4, column=0, sticky='w', padx=column0_padx)
-                version.grid(row=4, column=1, sticky='w')
+        lbl_version = ttk.Label(master, text="Beta-Version @TechnoDesign")
+        version = ttk.Label(master, text="ver. 1.004")
+        lbl_version.grid(row=4, column=0, sticky='w', padx=column0_padx)
+        version.grid(row=4, column=1, sticky='w')
 
-                sep = ttk.Label(master)
-                sep.grid(row=3, column=0, sticky='w')
+        sep = ttk.Label(master)
+        sep.grid(row=3, column=0, sticky='w')
 
                         #progress_bar
                         #progressbar = ttk.Progressbar(orient='horizontal', length=200, mode='determinate')
@@ -809,16 +810,18 @@ def run(username, master):
                         #progressbar.start()
 
                         # buttons
-                bottom_frame = Frame(master)
-                bottom_frame.grid(row=2, column=0, columnspan=2, sticky='w')
+        bottom_frame = Frame(master)
+        bottom_frame.grid(row=2, column=0, columnspan=2, sticky='w')
 
-                btn_start = ttk.Button(bottom_frame, text = "Run", width=7, command=lambda: run(entry_point.get(), master))
-                btn_start.pack(side='left', padx=100)
-                btn_exit = ttk.Button(bottom_frame, text="Exit", width=7, command=self.root.quit)
-                btn_exit.pack(side='left', padx=10)
+        btn_start = ttk.Button(bottom_frame, text = "Run", width=7, command=lambda: run(entry_point.get(), master))
+        btn_start.pack(side='left', padx=100)
+        btn_exit = ttk.Button(bottom_frame, text="Exit", width=7, command=self.root.quit)
+        btn_exit.pack(side='left', padx=10)
 
-                root = Tk()
-                root.title("Emotion Calculator of TWITTER Data")
-                root.minsize(500, 700)
-                app = App(root)
-                root.mainloop()
+        root = Tk()
+        root.title("Emotion Calculator of TWITTER Data")
+        root.minsize(500, 700)
+        app = App(root)
+        root.mainloop()
+
+run("Elon MusK",None)
