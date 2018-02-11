@@ -170,7 +170,7 @@ def rem_punctuation(tweets,punct):
     return tweets
 
 def score(name):
-    filename = 'data_emotions_words_list.csv'
+    filename = 'a.csv'
     count_adj=0
     count=0
     ans=[]
@@ -287,23 +287,23 @@ def score(name):
 
                 #FIX THIS BELOW
 
-                # ans_list=[]
-                # ans_list.append(word)
-                # ans_list.append(list_verb[1])
-                # ans_list.append(list_verb[1])
-                # ans_list.append(list_verb[1])
-                # ans_list.append(list_verb[1])
-                # ans_list.append(list_verb[1])
+                ans_list=[]
+                ans_list.append(word)
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
+                ans_list.append(list_verb[1])
 
                 #FIX THIS BELOW
 
 
-                # if special_word is None:
-                #     special_word=word
-                #     special_score=float(list_verb[1])
-                # else:
-                #     special_word=word
-                #     special_score=float(special_score)*float(list_verb[1])
+                if special_word is None:
+                    special_word=word
+                    special_score=float(list_verb[1])
+                else:
+                    special_word=word
+                    special_score=float(special_score)*float(list_verb[1])
 
                                         #print(ans_list)
                 break
@@ -323,6 +323,7 @@ def score(name):
 
 def score2(name):
         # count_adj=0
+    filename = 'a.csv'
     count = 0
     ans = []
     ans.append(0)
@@ -356,30 +357,31 @@ def score2(name):
         for word in list_words:
             with open("data_emotions_words_list.csv", encoding="ISO-8859-1", newline='') as f:
                 reader = csv.reader(f)
-            for row in reader:
-                my_list = row
-                word = word.lower()
-                if (word == my_list[0] and len(word) >= 1):
-                    ans_list = []
-                    count_adj += 1
-                        # print(count)
-                    ans_list.append(word)
-                    ans_list.append(my_list[1])
-                    ans_list.append(my_list[3])
-                    ans_list.append(my_list[5])
-                    ans_list.append(my_list[7])
-                    ans_list.append(my_list[9])
-                    adj_ans[0] += float(my_list[1])
-                    adj_ans[1] += float(my_list[3])
-                    adj_ans[2] += float(my_list[5])
-                    adj_ans[3] += float(my_list[7])
-                    adj_ans[4] += float(my_list[9])
+                for row in reader:
+                    my_list = row
+                    word = word.lower()
+                    if (word == my_list[0] and len(word) >= 1):
+                        ans_list = []
+                        count_adj += 1
+                            # print(count)
+                        ans_list.append(word)
+                        ans_list.append(my_list[1])
+                        ans_list.append(my_list[3])
+                        ans_list.append(my_list[5])
+                        ans_list.append(my_list[7])
+                        ans_list.append(my_list[9])
+                        adj_ans[0] += float(my_list[1])
+                        adj_ans[1] += float(my_list[3])
+                        adj_ans[2] += float(my_list[5])
+                        adj_ans[3] += float(my_list[7])
+                        adj_ans[4] += float(my_list[9])
 
                         # final_list.append(ans_list)
                         # print(ans_list)
                     break
+#FILENAME CHANGED ORIGINAL == 'adverb.csv'
 
-    with open('adverb.csv', encoding="ISO-8859-1", newline='') as a:
+    with open(filename, encoding="ISO-8859-1", newline='') as a:
         reader = csv.reader(a)
         for row in reader:
             list_adverb = row
@@ -713,7 +715,7 @@ def run(username, master):
     '''
     POS_tagger(tweets,username)
     print("Tweets have now been cleaned !!")
-    evalue = score(tweets)
+    evalue = score2(tweets)
 
     learn("pos_tagged_"+username+".txt")
     L3 = Label(master, text="Happiness : ", wraplength=150, justify='left', pady=row_pady)
