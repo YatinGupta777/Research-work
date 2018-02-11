@@ -3,6 +3,7 @@ import tweepy
 from time import sleep
 import csv
 import nltk
+#nltk.download()
 from tkinter import*
 import tkinter as ttk
 from twitter import *
@@ -819,10 +820,15 @@ class App:
         btn_exit = ttk.Button(bottom_frame, text="Exit", width=7, command=self.root.quit)
         btn_exit.pack(side='left', padx=10)
 
-        root = Tk()
-        root.title("Emotion Calculator of TWITTER Data")
-        root.minsize(500, 700)
-        app = App(root)
-        root.mainloop()
+def main():
+    root = Tk()
+    root.title("Emotion Calculator of TWITTER Data")
+    root.minsize(500, 700)
+    app = App(root)
+    root.mainloop()
 
-run("#DTU",None)
+if __name__ == "__main__":
+    main()
+
+
+#run("#DTU",None)
