@@ -2,7 +2,7 @@
 import tweepy
 from time import sleep
 import csv
-
+import nltk
 
 
 
@@ -309,7 +309,7 @@ score("Elon Musk")# For debugging
 
 #Scoring Module 2
 
-def score(name):
+def score2(name):
         # count_adj=0
     count = 0
     ans = []
@@ -465,4 +465,180 @@ def POS_tagger(tweets, username):
                     handle = open(filename, "w")
                     for i in x:
                         handle.write(i + '\n')
+
+#Function to expand the dictionary:
+def learn(name):
+    list = []
+    filename = 'data_emotions_words_list.csv'
+    fname = 'new_dict.csv'
+    dict_list = []
+    new_list = []
+    l = 0
+    oh = []
+    oa = []
+    os = []
+    od = []
+    of = []
+    oc = []
+
+    with open(fname,encoding="ISO-8859-1",newline='') as n: #new dictionary
+        new_reader = csv.reader(n)
+        for new_row in new_reader:
+            my_new_list = new_row
+                #new_list.append(my_new_list[0])
+            dict_list.append(my_new_list[0])
+            oh.append(float(my_new_list[1]))
+            oa.append(float(my_new_list[2]))
+            os.append(float(my_new_list[3]))
+            of.append(float(my_new_list[4]))
+            od.append(float(my_new_list[5]))
+            oc.append(float(my_new_list[6]))
+            print(dict_list[l]+","+str(oh[l]))
+            l += 1
+
+    list_evalue = []
+    my_new_list = []
+    b = []
+    j = 0
+
+    ##############ADDED#########
+    a = []
+    h = []
+    s = []
+    d = []
+    f = []
+    c =[]
+    dh = []
+    da = []
+    ds = []
+    dd = []
+    df = []
+    dc = []
+
+    #####################################
+
+    words = []
+    ans = [0.52,0.32,0.3,0.36,0.28]
+    '''
+    ans[0] = 0.48
+    ans[1] = 0.32
+    ans[2] = 0.3
+    ans[3] = 0.36
+    ans[4] = 0.28
+    '''
+    fi = open(name,'r')
+    tweets = fi.readlines()
+    for tweet in tweets:
+        if(tweet == '\n'):
+            continue
+            words[:] = []
+            words = tweet.split(' ')
+            for word in words:
+                if(word == '\n'):
+                    continue
+                #print(word)
+                    word=word.lower()
+                with open(filename,encoding="ISO-8859-1",newline='') as di:  #original dictionary
+                    reader = csv.reader(di)
+                    for row in reader:
+                        my_list=row
+                        if(word != my_list[0]):                     # word not in original dictionary
+
+                            if(word in new_list):
+                                if(word in dict_list):              # word in new dictionary and in tweet
+                                    continue
+                                else:
+                                    j = new_list.index(word)        # repeated words
+                                    c[j] += 1
+                            else:
+                                l += 1
+                new_list.append(word)               # word not in new dictionary
+                oh.append(ans[0])
+                oa.append(ans[1])
+                os.append(ans[2])
+                of.append(ans[3])
+                od.append(ans[4])
+                oc.append(1)
+
+                                #print(new_list[l-1]+","+str(h[l-1])+","+str(a[l-1])+","+str(s[l-1])+","+str(f[l-1])+","+str(d[l-1])+","+str(c[l-1]))
+
+
+    total = l
+    z = 0
+    '''
+    cnt = 0
+    with open(fname,encoding="ISO-8859-1",newline='') as n: #new dictionary
+    new_reader = csv.reader(n)
+    fornew_row in new_reader:
+    cnt += 1
+    '''
+
+    while(z<len(new_list)):
+        if(c[z]>=1000):
+            c[z] = round((c[z]/1036),1)
+            z = z + 1
+
+
+    print("\n"+str(len(dict_list))+"\n")
+    print(len(new_list))
+    print("\n")
+    print(l)
+    i = 0
+
+    k = 0
+    z = 0
+    '''
+        flag2 = []
+    while(i<len(dict_list)):
+    flag2[i] = 0
+    i += 1
+    '''
+    flag2 = [0]*len(dict_list)
+    flag3 = [0]*len(new_list)
+    while(z<len(new_list)):
+        i = 0
+        flag = 0
+    while(i<len(dict_list) and flag == 0):
+        if(new_list[z] == dict_list[i] and flag3[z] == 0):        # in tweet and in dictionary
+            flag = 1
+            flag2[i] = 1
+            flag3[z] = 1
+            list.append(new_list[z])
+            dh.append((h[z]*c[z] + oh[i]*oc[i])/(c[z]+oc[i]))
+            da.append((a[z]*c[z] + oa[i]*oc[i])/(c[z]+oc[i]))
+            ds.append((s[z]*c[z] + os[i]*oc[i])/(c[z]+oc[i]))
+            df.append((f[z]*c[z] + of[i]*oc[i])/(c[z]+oc[i]))
+            dd.append((d[z]*c[z] + od[i]*oc[i])/(c[z]+oc[i]))
+            dc.append(c[z]+oc[i])
+
+        else:
+            if(flag2[i] == 0):                                    # only in dictionary
+                list.append(dict_list[i])
+                dh.append(oh[i])
+                da.append(oa[i])
+                ds.append(os[i])
+                df.append(of[i])
+                dd.append(od[i])
+                dc.append(oc[i])
+                flag2[i] = 1
+                i += 1
+
+    if(flag == 0 and flag3[z] == 0):
+        list.append(new_list[z])
+        dh.append(h[z])                     # in tweet only
+        da.append(a[z])
+        ds.append(s[z])
+        df.append(f[z])
+        dd.append(d[z])
+        dc.append(c[z])
+            #print(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
+        z += 1
+        z = 0
+        y = open("new_dict.csv",'w')
+    while(z<len(list)):
+        print(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
+        y.write(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
+        y.write("\n")
+        z = z + 1
+        y.close()
 
