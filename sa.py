@@ -537,7 +537,7 @@ def learn(name):
                 if(word == '\n'):
                     continue
                 #print(word)
-                    word=word.lower()
+                word=word.lower()
                 with open(filename,encoding="ISO-8859-1",newline='') as di:  #original dictionary
                     reader = csv.reader(di)
                     for row in reader:
@@ -635,10 +635,10 @@ def learn(name):
         z += 1
         z = 0
         y = open("new_dict.csv",'w')
-    while(z<len(list)):
+    while(z < len(list)):
         print(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
         y.write(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
         y.write("\n")
         z = z + 1
-        y.close()
+    y.close()
 
