@@ -5,6 +5,7 @@ import csv
 import nltk
 from tkinter import*
 import tkinter as ttk
+from twitter import *
 import twitter
 
 import matplotlib
@@ -20,6 +21,8 @@ access_key = "1587880604-1tjWpdETzVE4fPALCGeNs6O2oHi4y8ShwIsDQSl"
 access_secret = "wJHBahm2y3KnTXuuj2JX18GAolaHVMnLKZ7Ygc0LxnQMH"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
+t = Twitter(
+    auth=OAuth(access_key, access_secret, consumer_key, consumer_secret))
 
 #Function to download tweets corresponding to a hash tag.
 
@@ -100,13 +103,13 @@ def get_all_hash():
 def get_all_tweets(username):
 
     alltweets = []
-    user_timeline = twitter.get_user_timeline(screen_name=username,count=200,include_rts=1)
+    user_timeline = t.statuses.user_timeline(screen_name=username,count=200,include_rts=1)
     alltweets.extend(user_timeline)
     oldest = alltweets[-1]['id'] - 1
 
         #keep grabbing tweets until there are no tweets left to grab
     while len(user_timeline) > 0:
-        user_timeline = twitter.get_user_timeline(screen_name=username,count=200,include_rts=1,max_id=oldest)
+        user_timeline = t.statuses.user_timeline(screen_name=username,count=200,include_rts=1,max_id=oldest)
         alltweets.extend(user_timeline)
         oldest = alltweets[-1]['id']
 
@@ -493,7 +496,8 @@ def learn(name):
 
 ##FILENAME CHANGED ORIGINAL == fname
 
-    with open(filename,encoding="ISO-8859-1",newline='') as n: #new dictionary
+    with open(filename,encoding="ISO-8859-1",newline='') as n:
+            #new dictionary
         new_reader = csv.reader(n)
         for new_row in new_reader:
             my_new_list = new_row
@@ -824,4 +828,4 @@ class App:
         app = App(root)
         root.mainloop()
 
-run("Elon MusK",None)
+run("@elonmusk",None)
