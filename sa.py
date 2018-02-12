@@ -323,7 +323,7 @@ def score(name):
 
 def score2(name):
         # count_adj=0
-    filename = 'a.csv'
+    filename = 'data_emotions_words_list.csv'
     count = 0
     ans = []
     ans.append(0)
@@ -404,8 +404,8 @@ def score2(name):
 
                     # print(ans_list)
                 break
-
-    with open('verb.csv', encoding="ISO-8859-1", newline='') as v:
+#FILENAME CHANGED ORIGINAL == 'verb.csv'
+    with open(filename, encoding="ISO-8859-1", newline='') as v:
         reader = csv.reader(v)
         for row in reader:
             list_verb = row
@@ -429,6 +429,10 @@ def score2(name):
 
                     # print(ans_list)
                 break
+
+                    ##########ARBITARY VALUE
+            count_adj = 3
+                    #############
 
             if adj_ans[0] / count_adj > 3:
                 ans[0] = ((adj_ans[0] / 3.725) + adv_ans[0]) / (count + count_adj)
@@ -485,6 +489,9 @@ def learn(name):
     list = []
     filename = 'data_emotions_words_list.csv'
     fname = 'new_dict.csv'
+    #########################
+    fname = 'a.csv'
+    ##########################
     dict_list = []
     new_list = []
     l = 0
@@ -497,7 +504,7 @@ def learn(name):
 
 ##FILENAME CHANGED ORIGINAL == fname
 
-    with open(filename,encoding="ISO-8859-1",newline='') as n:
+    with open(fname,encoding="ISO-8859-1",newline='') as n:
             #new dictionary
         new_reader = csv.reader(n)
         for new_row in new_reader:
@@ -612,46 +619,46 @@ def learn(name):
     '''
     flag2 = [0]*len(dict_list)
     flag3 = [0]*len(new_list)
-    while(z<len(new_list)):
+    while(z < len(new_list)):
         i = 0
         flag = 0
-    while(i<len(dict_list) and flag == 0):
-        if(new_list[z] == dict_list[i] and flag3[z] == 0):        # in tweet and in dictionary
-            flag = 1
-            flag2[i] = 1
-            flag3[z] = 1
-            list.append(new_list[z])
-            dh.append((h[z]*c[z] + oh[i]*oc[i])/(c[z]+oc[i]))
-            da.append((a[z]*c[z] + oa[i]*oc[i])/(c[z]+oc[i]))
-            ds.append((s[z]*c[z] + os[i]*oc[i])/(c[z]+oc[i]))
-            df.append((f[z]*c[z] + of[i]*oc[i])/(c[z]+oc[i]))
-            dd.append((d[z]*c[z] + od[i]*oc[i])/(c[z]+oc[i]))
-            dc.append(c[z]+oc[i])
-
-        else:
-            if(flag2[i] == 0):                                    # only in dictionary
-                list.append(dict_list[i])
-                dh.append(oh[i])
-                da.append(oa[i])
-                ds.append(os[i])
-                df.append(of[i])
-                dd.append(od[i])
-                dc.append(oc[i])
+        while(i<len(dict_list) and flag == 0):
+            if(new_list[z] == dict_list[i] and flag3[z] == 0):        # in tweet and in dictionary
+                flag = 1
                 flag2[i] = 1
-                i += 1
+                flag3[z] = 1
+                list.append(new_list[z])
+                dh.append((h[z]*c[z] + oh[i]*oc[i])/(c[z]+oc[i]))
+                da.append((a[z]*c[z] + oa[i]*oc[i])/(c[z]+oc[i]))
+                ds.append((s[z]*c[z] + os[i]*oc[i])/(c[z]+oc[i]))
+                df.append((f[z]*c[z] + of[i]*oc[i])/(c[z]+oc[i]))
+                dd.append((d[z]*c[z] + od[i]*oc[i])/(c[z]+oc[i]))
+                dc.append(c[z]+oc[i])
 
-    if(flag == 0 and flag3[z] == 0):
-        list.append(new_list[z])
-        dh.append(h[z])                     # in tweet only
-        da.append(a[z])
-        ds.append(s[z])
-        df.append(f[z])
-        dd.append(d[z])
-        dc.append(c[z])
+            else:
+                if(flag2[i] == 0):                                    # only in dictionary
+                    list.append(dict_list[i])
+                    dh.append(oh[i])
+                    da.append(oa[i])
+                    ds.append(os[i])
+                    df.append(of[i])
+                    dd.append(od[i])
+                    dc.append(oc[i])
+                    flag2[i] = 1
+                    i += 1
+
+            if(flag == 0 and flag3[z] == 0):
+                list.append(new_list[z])
+                dh.append(h[z])                     # in tweet only
+                da.append(a[z])
+                ds.append(s[z])
+                df.append(f[z])
+                dd.append(d[z])
+                dc.append(c[z])
             #print(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
-        z += 1
-        z = 0
-        y = open("new_dict.csv",'w')
+                z += 1
+    z = 0
+    y = open("new_dict.csv",'w')
     while(z < len(list)):
         print(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
         y.write(list[z]+","+str(dh[z])+","+str(da[z])+","+str(ds[z])+","+str(df[z])+","+str(dd[z])+","+str(dc[z]))
