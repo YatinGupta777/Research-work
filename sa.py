@@ -753,44 +753,44 @@ def run(username, master):
     btn_start.pack(side='left', padx=145)
     print("Tweets have now been cleaned !!")
 
-def new_window():
-    id = "Graph"
-    window = Toplevel(master)
-    label = ttk.Label(window, text=id)
-    label.pack(side="top", fill="both", padx=10, pady=10)
+    def new_window():
+        id = "Graph"
+        window = Toplevel(master=None)#Removed passing of master
+        label = ttk.Label(window, text=id)
+        label.pack(side="top", fill="both", padx=10, pady=10)
 
-    f = Figure(figsize=(5,5), dpi=100)
-    a = f.add_subplot(111)
-                #t = arange(0.0,3.0,0.01)
-                #s = sin(2*pi*t)
-                #a.plot(t,s)
-    a.plot([1,2,3,4,5],[evalue[0], evalue[1], evalue[2], evalue[3], evalue[4]])
-    a.set_title('Emotion Scores')
-    a.set_xlabel('1 - > Happiness , 2 - > Anger , 3 - > Sadness , 4 - > Fear , 5 - > Disgust ')
-    a.set_ylabel('Score')
+        f = Figure(figsize=(5,5), dpi=100)
+        a = f.add_subplot(111)
+                    #t = arange(0.0,3.0,0.01)
+                    #s = sin(2*pi*t)
+                    #a.plot(t,s)
+        a.plot([1,2,3,4,5],[evalue[0], evalue[1], evalue[2], evalue[3], evalue[4]])
+        a.set_title('Emotion Scores')
+        a.set_xlabel('1 - > Happiness , 2 - > Anger , 3 - > Sadness , 4 - > Fear , 5 - > Disgust ')
+        a.set_ylabel('Score')
 
-                # atk.DrawingArea
-    canvas = FigureCanvasTkAgg(f, master=window)
-    canvas.show()
-    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+                    # atk.DrawingArea
+        canvas = FigureCanvasTkAgg(f, master=window)
+        canvas.show()
+        canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
-    toolbar = NavigationToolbar2TkAgg( canvas, window )
-    toolbar.update()
-    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+        toolbar = NavigationToolbar2TkAgg( canvas, window )
+        toolbar.update()
+        canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-    def on_key_event(event):
-        print('you pressed %s'%event.key)
-        key_press_handler(event, canvas, toolbar)
+        def on_key_event(event):
+            print('you pressed %s'%event.key)
+            key_press_handler(event, canvas, toolbar)
 
-        canvas.mpl_connect('key_press_event', on_key_event)
+            canvas.mpl_connect('key_press_event', on_key_event)
 
-    def _quit():
-        window.quit()     # stops mainloop
-        window.destroy()  # this is necessary on Windows to prevent
-                                        # Fatal Python Error: PyEval_RestoreThread: NULL tstate
+        def _quit():
+            window.quit()     # stops mainloop
+            window.destroy()  # this is necessary on Windows to prevent
+                                            # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
-        button = ttk.Button(master=window, text='Quit', command=_quit)
-        button.pack(side=BOTTOM)
+            button = ttk.Button(master=window, text='Quit', command=_quit)
+            button.pack(side=BOTTOM)
 
 class App:
     def __init__(self, master):
@@ -838,6 +838,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-#run("#DTU",None)
