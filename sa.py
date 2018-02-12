@@ -93,9 +93,12 @@ def get_all_hash(hashtag):
                     tweet=tweet.encode('ascii','ignore')
                     z.write(tweet.decode())
                     z.write("\n")
-                    z.close()
-            except :
-                print("Errors !")
+                z.close()
+            except tweepy.TweepError as e:
+                # Just exit if any error
+                    print("some error : " + str(e))
+                    break
+
     return list_tweets
 
 #print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
@@ -181,7 +184,7 @@ def score(name):
     ans.append(0)
     ans.append(0)
     special_word=None
-    special_score=None
+    special_score=0 ###CHANGED FROM NONE
 
         #r=open(sys.argv[1],'r')
     for line in name:
@@ -315,8 +318,8 @@ def score(name):
                 #ans[i]=ans[i]/((5*count_adj)+count)
             if count_adj != 0:
                 ans[i]=ans[i]/(5*count_adj)
-        print(ans)
-        return ans
+    print(ans)
+    return ans
 
 
 #Scoring Module 2
@@ -378,7 +381,7 @@ def score2(name):
 
                         # final_list.append(ans_list)
                         # print(ans_list)
-                    break
+                        break
 #FILENAME CHANGED ORIGINAL == 'adverb.csv'
 
     with open(filename, encoding="ISO-8859-1", newline='') as a:
@@ -459,8 +462,8 @@ def score2(name):
             else:
                 ans[3] = ((adj_ans[3] / 2.5) - adv_ans[3]) / (count + count_adj)
 
-            print(ans)
-            return ans
+    print(ans)
+    return ans
 
     #POS Tagger Function used to identify the adjectives, verbs, adverbs.
 def POS_tagger(tweets, username):
@@ -722,7 +725,7 @@ def run(username, master):
     '''
     POS_tagger(tweets,username)
     print("Tweets have now been cleaned !!")
-    evalue = score2(tweets)
+    evalue = score(tweets)
 
     learn("pos_tagged_"+username+".txt")
     L3 = Label(master, text="Happiness : ", wraplength=150, justify='left', pady=row_pady)
