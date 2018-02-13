@@ -184,7 +184,7 @@ def score(name):
     ans.append(0)
     ans.append(0)
     special_word=None
-    special_score=0 ###CHANGED FROM NONE
+    special_score=None ###CHANGED FROM NONE
 
         #r=open(sys.argv[1],'r')
     for line in name:
@@ -723,7 +723,7 @@ def run(username, master):
     '''
     POS_tagger(tweets,username)
     print("Tweets have now been cleaned !!")
-    evalue = score2(tweets)
+    evalue = score(tweets)
 
     learn("pos_tagged_"+username+".txt")
     L3 = Label(master, text="Happiness : ", wraplength=150, justify='left', pady=row_pady)
