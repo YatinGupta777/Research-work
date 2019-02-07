@@ -1,0 +1,64 @@
+@relation Binary_final_data_#rubyonrails
+
+@attribute A {column,alert,name,complete,learn,'computer answer',python,option,not,method,'more learn',death,ship,talent,false,'love not','alert bar',custom,'execution time','learn python','song imagine','friendly table'}
+@attribute B numeric
+@attribute C numeric
+@attribute D numeric
+@attribute E numeric
+@attribute F numeric
+@attribute 'G ' {Happiness,Fear,Sadness,Anger}
+
+@data
+column,0.264,0.244,0.25,0.25,0.226,Happiness
+alert,0.408,0.324,0.272,0.46,0.256,Fear
+alert,0.408,0.324,0.272,0.46,0.256,Fear
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+complete,0,0,0,0,0,Happiness
+learn,0.706,0.34,0.304,0.332,0.222,Happiness
+'computer answer',0.504,0.326,0.264,0.293,0.253,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+complete,0,0,0,0,0,Happiness
+alert,0.408,0.324,0.272,0.46,0.256,Fear
+option,0.578,0.264,0.238,0.314,0.216,Happiness
+not,0,0,0,0,0,Happiness
+complete,0,0,0,0,0,Happiness
+method,0.314,0.252,0.25,0.258,0.244,Happiness
+'more learn',0.353,0.17,0.152,0.166,0.111,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+death,0.25,0.632,0.88,0.786,0.442,Sadness
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+ship,0.432,0.226,0.25,0.34,0.226,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+learn,0.706,0.34,0.304,0.332,0.222,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+learn,0.706,0.34,0.304,0.332,0.222,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+talent,0.796,0.236,0.246,0.27,0.224,Happiness
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+name,0.508,0.298,0.278,0.264,0.252,Happiness
+not,0,0,0,0,0,Happiness
+death,0.25,0.632,0.88,0.786,0.442,Sadness
+false,0.244,0.524,0.422,0.4,0.318,Anger
+'love not',0.944,0.34,0.432,0.41,0.244,Happiness
+alert,0.408,0.324,0.272,0.46,0.256,Fear
+complete,0,0,0,0,0,Happiness
+complete,0,0,0,0,0,Happiness
+complete,0,0,0,0,0,Happiness
+complete,0,0,0,0,0,Happiness
+'more learn',0.353,0.17,0.152,0.166,0.111,Happiness
+'more learn',0.353,0.17,0.152,0.166,0.111,Happiness
+learn,0.706,0.34,0.304,0.332,0.222,Happiness
+'alert bar',0.515,0.321,0.299,0.396,0.29,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+custom,0.442,0.242,0.256,0.236,0.234,Happiness
+talent,0.796,0.236,0.246,0.27,0.224,Happiness
+'love not',0.944,0.34,0.432,0.41,0.244,Happiness
+'love not',0.944,0.34,0.432,0.41,0.244,Happiness
+

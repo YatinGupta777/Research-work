@@ -1,0 +1,219 @@
+@relation Binary_final_data_#Python3
+
+@attribute A {'world like python','building more','rock paper scissors',python,'rock paper','more humble book','free complete',joy,free,'free complete python','python learn',more,tool,not,'more machine','time idea','most building python',part,'nice little too free','python quick',quick,time,good,'fear not','world like python world python python','python python','world like python world python',learn,'good progress',like,'python more',nice,'very python',game,'computer most python','building python','most useful python',people,'happy python any family',imagine,'python learn python python','learn python python','most python'}
+@attribute B numeric
+@attribute C numeric
+@attribute D numeric
+@attribute E numeric
+@attribute F numeric
+@attribute G {'Happiness','Anger','Sadness','Fear','Disgust'}
+
+
+@data
+'world like python',0.3978,0.2944,0.3046,0.46,0.3452,Fear
+'world like python',0.3978,0.2944,0.3046,0.46,0.3452,Fear
+'world like python',0.3978,0.2944,0.3046,0.46,0.3452,Fear
+'building more',0.334,0.248,0.238,0.28,0.25,Happiness
+'rock paper scissors',0.326,0.326667,0.289333,0.339333,0.278667,Fear
+'rock paper scissors',0.326,0.326667,0.289333,0.339333,0.278667,Fear
+'rock paper scissors',0.326,0.326667,0.289333,0.339333,0.278667,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'rock paper scissors',0.326,0.326667,0.289333,0.339333,0.278667,Fear
+'rock paper',0.344,0.329,0.295,0.309,0.293,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'building more',0.334,0.248,0.238,0.28,0.25,Happiness
+'building more',0.334,0.248,0.238,0.28,0.25,Happiness
+'more humble book',0.4595,0.266,0.279,0.252,0.2355,Happiness
+'more humble book',0.4595,0.266,0.279,0.252,0.2355,Happiness
+'more humble book',0.4595,0.266,0.279,0.252,0.2355,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'free complete',0.872,0.23,0.23,0.266,0.218,Happiness
+joy,0.906,0.214,0.23,0.216,0.22,Happiness
+'more humble book',0.4595,0.266,0.279,0.252,0.2355,Happiness
+'more humble book',0.4595,0.266,0.279,0.252,0.2355,Happiness
+'more humble book',0.4595,0.266,0.279,0.252,0.2355,Happiness
+free,0.872,0.23,0.23,0.266,0.218,Happiness
+free,0.872,0.23,0.23,0.266,0.218,Happiness
+free,0.872,0.23,0.23,0.266,0.218,Happiness
+'free complete',0.872,0.23,0.23,0.266,0.218,Happiness
+'free complete python',0.567,0.283,0.267,0.488,0.348,Happiness
+'free complete',0.872,0.23,0.23,0.266,0.218,Happiness
+'free complete',0.872,0.23,0.23,0.266,0.218,Happiness
+'free complete',0.872,0.23,0.23,0.266,0.218,Happiness
+'python learn',0.484,0.338,0.304,0.521,0.35,Fear
+more,0,0,0,0,0,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'python learn',0.484,0.338,0.304,0.521,0.35,Fear
+'python learn',0.484,0.338,0.304,0.521,0.35,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+more,0,0,0,0,0,Happiness
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+more,0,0,0,0,0,Happiness
+more,0,0,0,0,0,Happiness
+more,0,0,0,0,0,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+not,0,0,0,0,0,Happiness
+'more machine',0.185,0.169,0.138,0.182,0.139,Happiness
+'more machine',0.185,0.169,0.138,0.182,0.139,Happiness
+'more machine',0.185,0.169,0.138,0.182,0.139,Happiness
+not,0,0,0,0,0,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'time idea',0.513,0.31,0.328,0.348,0.253,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'most building python',0.2813,0.2796,0.2591,0.481,0.3515,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'most building python',0.2813,0.2796,0.2591,0.481,0.3515,Fear
+'most building python',0.2813,0.2796,0.2591,0.481,0.3515,Fear
+part,0.316,0.256,0.298,0.274,0.252,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'most building python',0.2813,0.2796,0.2591,0.481,0.3515,Fear
+part,0.316,0.256,0.298,0.274,0.252,Happiness
+part,0.316,0.256,0.298,0.274,0.252,Happiness
+'nice little too free',0.645,0.1685,0.1735,0.1805,0.1665,Happiness
+'python quick',0.384,0.301,0.283,0.496,0.353,Fear
+quick,0.506,0.266,0.262,0.282,0.228,Happiness
+quick,0.506,0.266,0.262,0.282,0.228,Happiness
+quick,0.506,0.266,0.262,0.282,0.228,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+more,0,0,0,0,0,Happiness
+more,0,0,0,0,0,Happiness
+time,0.414,0.356,0.39,0.432,0.264,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+time,0.414,0.356,0.39,0.432,0.264,Fear
+good,0.884,0.234,0.228,0.242,0.226,Happiness
+good,0.884,0.234,0.228,0.242,0.226,Happiness
+good,0.884,0.234,0.228,0.242,0.226,Happiness
+'fear not',0.224,0.454,0.504,0.874,0.328,Fear
+'fear not',0.224,0.454,0.504,0.874,0.328,Fear
+time,0.414,0.356,0.39,0.432,0.264,Fear
+time,0.414,0.356,0.39,0.432,0.264,Fear
+time,0.414,0.356,0.39,0.432,0.264,Fear
+'world like python world python python',0.38112,0.31616,0.31664,0.5384,0.39088,Fear
+'python python',0.262,0.336,0.304,0.71,0.478,Fear
+not,0,0,0,0,0,Happiness
+'python python',0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'world like python world python',0.4109,0.3112,0.3198,0.4955,0.3691,Fear
+learn,0.706,0.34,0.304,0.332,0.222,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'good progress',0.804,0.229,0.226,0.262,0.219,Happiness
+not,0,0,0,0,0,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+quick,0.506,0.266,0.262,0.282,0.228,Happiness
+quick,0.506,0.266,0.262,0.282,0.228,Happiness
+not,0,0,0,0,0,Happiness
+like,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+'python more',0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'python more',0.262,0.336,0.304,0.71,0.478,Fear
+nice,0.854,0.222,0.232,0.228,0.224,Happiness
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+'very python',0.131,0.168,0.152,0.355,0.239,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'very python',0.131,0.168,0.152,0.355,0.239,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+time,0.414,0.356,0.39,0.432,0.264,Fear
+'good progress',0.804,0.229,0.226,0.262,0.219,Happiness
+like,0,0,0,0,0,Happiness
+'good progress',0.804,0.229,0.226,0.262,0.219,Happiness
+'good progress',0.804,0.229,0.226,0.262,0.219,Happiness
+'good progress',0.804,0.229,0.226,0.262,0.219,Happiness
+game,0.706,0.378,0.318,0.294,0.24,Happiness
+'python python',0.262,0.336,0.304,0.71,0.478,Fear
+'python python',0.262,0.336,0.304,0.71,0.478,Fear
+'python python',0.262,0.336,0.304,0.71,0.478,Fear
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'computer most python',0.3869,0.3352,0.2658,0.4625,0.3571,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'building python',0.298,0.292,0.271,0.495,0.364,Fear
+'most useful python',0.4505,0.2823,0.2564,0.4576,0.3398,Fear
+'most useful python',0.4505,0.2823,0.2564,0.4576,0.3398,Fear
+'most useful python',0.4505,0.2823,0.2564,0.4576,0.3398,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'most useful python',0.4505,0.2823,0.2564,0.4576,0.3398,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'building python',0.298,0.292,0.271,0.495,0.364,Fear
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+people,0.626,0.382,0.38,0.386,0.344,Happiness
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'happy python any family',0.425333,0.419333,0.412667,0.561333,0.493333,Fear
+not,0,0,0,0,0,Happiness
+imagine,0.716,0.236,0.252,0.312,0.23,Happiness
+imagine,0.716,0.236,0.252,0.312,0.23,Happiness
+'python learn python python',0.373,0.337,0.304,0.6155,0.414,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'learn python python',0.41,0.337333,0.304,0.584,0.392667,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'learn python python',0.41,0.337333,0.304,0.584,0.392667,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'learn python python',0.41,0.337333,0.304,0.584,0.392667,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+not,0,0,0,0,0,Happiness
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+'most python',0.2358,0.3024,0.2736,0.639,0.4302,Fear
+'most python',0.2358,0.3024,0.2736,0.639,0.4302,Fear
+'most python',0.2358,0.3024,0.2736,0.639,0.4302,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+'most python',0.2358,0.3024,0.2736,0.639,0.4302,Fear
+tool,0.316,0.266,0.242,0.27,0.246,Happiness
+'python quick',0.384,0.301,0.283,0.496,0.353,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
+python,0.262,0.336,0.304,0.71,0.478,Fear
