@@ -3,7 +3,6 @@ import tweepy
 from time import sleep
 import csv
 import nltk
-#nltk.download()
 from tkinter import*
 import tkinter as ttk
 from twitter import *
@@ -543,13 +542,13 @@ def run(username, master):
     tweets = []
     print (username)
     if(username[0] == "@"):
-        #tweets = get_all_tweets(username)
+        tweets = get_all_tweets(username)
         print("Downloading of tweets of user has started !!")
 
 
 
     if(username[0] == "#"):
-        #tweets = get_all_hash(username)
+        tweets = get_all_hash(username)
         print("Downloading of tweets of hashtag has started !!")
 
     print("Tweets have been downloaded !!")
@@ -563,7 +562,6 @@ def run(username, master):
     for line in f:
     tweets.append(line)
     '''
-    tweets=["#AndroidQ latest beta is incredible on my #Pixel3! Battery is so much better now and everything is fluid and smooth 👏"]
     tweets=rem_substring(tweets,'#')
     tweets=rem_substring(tweets,'http')
     tweets=rem_substring(tweets,'@')
